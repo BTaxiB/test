@@ -4,6 +4,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/",
+            "App\\Traits\\": "src/traits/",
             "App\\Controllers\\": "src/controllers/",
             "App\\Models\\": "src/models/",
             "App\\Models\\Config": "src/models/"
