@@ -5,22 +5,21 @@ namespace App\Controllers;
 use App\Models\Product;
 use App\Traits\Sanitation;
 
-class ProductController extends Controller
+class ProductController
 {
     use Sanitation;
-
 
     /**
      * 
      */
-    function store()
+    function store(array $data)
     {
         try {
             $product = new Product();
-            $product->title       = Sanitation::validInput($_POST['title']);
-            $product->description = Sanitation::validInput($_POST['description']);
-            $product->image       = $_FILES['image']['name'];
-            $product->image_tmp   = $_FILES['image']['tmp_name'];
+            $product->title       = Sanitation::validInput($data['title']);
+            $product->description = Sanitation::validInput($data['description']);
+            $product->image       = $data['image'];
+            $product->image_tmp   = $data['image_tmp'];
 
             $product->create();
         } catch (\Throwable $th) {
@@ -45,9 +44,9 @@ class ProductController extends Controller
     function show(int $id)
     {
         $product = new Product();
-        $product->edit($id);
+        $data = $product->edit($id);
 
-        return $product;
+        return $data;
     }
 
     /**
@@ -73,3 +72,4 @@ class ProductController extends Controller
         $product->delete($id);
     }
 }
+
