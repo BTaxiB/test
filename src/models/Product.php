@@ -42,7 +42,6 @@ class Product extends Model
         }
 
         //upload file
-
         return $prep_state;
     }
 
