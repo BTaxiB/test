@@ -49,21 +49,27 @@ class Product extends Model
     /**
      * Show table row with matching id.
      * 
-     * @return void
+     * @return array
      */
-    function edit(int $id): void
+    function edit(int $id): array
     {
-        $sql = "SELECT * FROM {$this->table} WHERE id = :id";
+        $sql = "SELECT * FROM {$this->table} WHERE id = :id LIMIT 1";
 
         $prep_state = $this->getDB()->prepare($sql);
 
         $prep_state->bindParam(':id', $id);
 
-        $row = $prep_state->fetch();
+        $prep_state->execute();
+        
+        $row = $prep_state->fetch(\PDO::FETCH_ASSOC);
+        
+        $data = [];
 
-        $this->title       = $row['title'];
-        $this->image       = $row['image'];
-        $this->description = $row['description'];
+        $data['title']     = $row['title'];
+        $data['image']      = $row['image'];
+        $data['description'] = $row['description'];
+
+        return $data;
     }
 
     /**
