@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Config\Models;
+namespace App\Models\Config;
 
 require_once 'config.php';
 

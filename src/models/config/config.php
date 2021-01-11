@@ -1,5 +1,5 @@
 <?php
-namespace App\Config\Models;
+namespace App\Models\Config;
 
 /**
  * Database credentials.
