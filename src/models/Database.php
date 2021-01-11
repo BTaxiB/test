@@ -3,6 +3,7 @@
 namespace App\Models;
 
 require_once 'config.php';
+
 class Database extends \PDO
 {
     protected static ?Database $instance = null;
