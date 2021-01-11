@@ -60,13 +60,13 @@ class Product extends Model
         $prep_state->bindParam(':id', $id);
 
         $prep_state->execute();
-        
+
         $row = $prep_state->fetch(\PDO::FETCH_ASSOC);
         
         $data = [];
 
-        $data['title']     = $row['title'];
-        $data['image']      = $row['image'];
+        $data['title']       = $row['title'];
+        $data['image']       = $row['image'];
         $data['description'] = $row['description'];
 
         return $data;

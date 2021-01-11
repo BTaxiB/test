@@ -12,7 +12,7 @@ class ProductController
     /**
      * 
      */
-    function store(array $data)
+    function store(array $data): void
     {
         try {
             $product = new Product();
@@ -41,7 +41,7 @@ class ProductController
     /**
      * 
      */
-    function show(int $id)
+    function show(int $id): array
     {
         $product = new Product();
         $data = $product->edit($id);
@@ -52,24 +52,23 @@ class ProductController
     /**
      * 
      */
-    function update(int $id)
+    function update(array $data): void
     {
         $product = new Product();
-        $product->title       = Sanitation::validInput($_POST['title']);
-        $product->description = Sanitation::validInput($_POST['description']);
-        $product->image       = $_FILES['image']['name'];
-        $product->image_tmp   = $_FILES['image']['tmp_name'];
+        $product->title       = Sanitation::validInput($data['title']);
+        $product->description = Sanitation::validInput($data['description']);
+        $product->image       = $data['image'];
+        $product->image_tmp   = $data['image_tmp'];
 
-        $product->update($id);
+        $product->update($data['id']);
     }
 
     /**
      * 
      */
-    function delete(int $id)
+    function delete(int $id): void
     {
         $product = new Product();
         $product->delete($id);
     }
 }
-
