@@ -2,9 +2,11 @@
 
 namespace App\Traits;
 
-trait Sanitation {
+trait Sanitation
+{
 
-    function validInput(string $data) {
+    function validInput(string $data): string
+    {
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
