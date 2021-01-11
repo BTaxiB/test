@@ -19,13 +19,11 @@ class Database extends \PDO
     }
 
 
-    protected static function serve(): Database
+    protected static function serve(): void
     {
         if (!isset(self::$instance)) {
             self::$instance = new self;
         }
-
-        return self::$instance;
     }
 
 
