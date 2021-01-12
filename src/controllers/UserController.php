@@ -16,10 +16,9 @@ class UserController
     {
         try {
             $user = new User();
-            $user->title       = Sanitation::validInput($data['title']);
-            $user->description = Sanitation::validInput($data['description']);
-            $user->image       = $data['image'];
-            $user->image_tmp   = $data['image_tmp'];
+            $user->username    = Sanitation::validInput($data['username']);
+            $user->password    = Sanitation::validInput($data['password']);
+            $user->admin       = $data['admin'];
 
             $user->create();
         } catch (\Throwable $th) {
@@ -30,13 +29,13 @@ class UserController
     /**
      * 
      */
-    function index()
-    {
-        $user = new User();
-        $data = $user->getAll();
+    // function index()
+    // {
+    //     $user = new User();
+    //     $data = $user->getAll();
 
-        return $data;
-    }
+    //     return $data;
+    // }
 
     /**
      * 
@@ -52,7 +51,7 @@ class UserController
     /**
      * 
      */
-    function update(int $id)
+    function grantAdmin(int $id)
     {
         $user = new User();
 

@@ -16,10 +16,10 @@ class CommentController
     {
         try {
             $comment = new Comment();
-            $comment->title       = Sanitation::validInput($data['title']);
-            $comment->description = Sanitation::validInput($data['description']);
-            $comment->image       = $data['image'];
-            $comment->image_tmp   = $data['image_tmp'];
+            $comment->name       = Sanitation::validInput($data['name']);
+            $comment->content    = Sanitation::validInput($data['content']);
+            $comment->email      = $data['email'];
+            $comment->product_id = $data['product_id'];
 
             $comment->create();
         } catch (\Throwable $th) {
