@@ -10,7 +10,9 @@ class CommentController
     use Sanitation;
 
     /**
+     * Store comments in database.
      * 
+     * @return void
      */
     function store(array $data): void
     {
@@ -28,7 +30,7 @@ class CommentController
     }
 
     /**
-     * 
+     * Get all comments.
      */
     function index()
     {
@@ -39,7 +41,7 @@ class CommentController
     }
 
     /**
-     * 
+     * Get company comments, where product id is not set.
      */
     function companyComments()
     {
@@ -50,7 +52,7 @@ class CommentController
     }
 
     /**
-     * 
+     * Get product comments, must match products id.
      */
     function productComments(int $id)
     {
@@ -72,7 +74,7 @@ class CommentController
     }
 
     /**
-     * 
+     * Remove comment from database.
      */
     function delete(int $id)
     {
