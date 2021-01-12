@@ -33,9 +33,20 @@ class CommentController
     function index()
     {
         $comment = new Comment();
-        $data = $comment->getAll();
+        $state = $comment->getAll();
 
-        return $data;
+        return $state;
+    }
+
+    /**
+     * 
+     */
+    function productComments(int $id)
+    {
+        $comment = new Comment();
+        $state = $comment->getMatch($id);
+
+        return $state;
     }
 
     /**
@@ -52,9 +63,10 @@ class CommentController
     /**
      * 
      */
-    function delete(int $id): void
+    function delete(int $id)
     {
         $comment = new Comment();
-        $comment->delete($id);
+
+        return $comment->delete($id);
     }
 }

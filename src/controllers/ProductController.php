@@ -33,9 +33,9 @@ class ProductController
     function index()
     {
         $product = new Product();
-        $data = $product->getAll();
+        $state = $product->getAll();
 
-        return $data;
+        return $state;
     }
 
     /**

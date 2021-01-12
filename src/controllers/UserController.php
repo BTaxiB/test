@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\User;
+use App\Models\Comment;
 use App\Traits\Sanitation;
 
 class UserController
@@ -63,6 +64,38 @@ class UserController
 
         $user->id = $result['id'];
         $user->setAdmin();
+    }
+
+    /**
+     * 
+     */
+    function checkStatus(int $id)
+    {
+        $user = new User();
+
+        $result = $this->show($id);
+
+        if (!isset($result['id'])) {
+            return false;
+        }
+
+        return $user->isAdmin($result['id']);
+    }
+
+    /**
+     * 
+     */
+    function approveComment(int $id)
+    {
+        $comment = new Comment();
+        $result = $this->show($id);
+
+        if (!isset($result['id'])) {
+            return false;
+        }
+
+        $comment->id = $result['id'];
+        $comment->approve();
     }
 
 
