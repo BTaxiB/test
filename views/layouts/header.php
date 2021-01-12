@@ -10,4 +10,17 @@
 
 </head>
 <?php require_once 'src/Bootstrap.php'; ?>
+<style>
+    html {
+        width: 1024px;
+        height: 768px;
+        margin: 0 auto;
+    }
+
+    .container-fluid {
+        margin: 0 auto;
+        width: 70%;
+    }
+</style>
+
 <body>

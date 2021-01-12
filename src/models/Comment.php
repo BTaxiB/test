@@ -53,7 +53,7 @@ class Comment extends Model
      */
     function getMatch(int $id)
     {
-        $sql = "SELECT * FROM {$this->table} WHERE product_id = :product_id";
+        $sql = "SELECT * FROM {$this->table} WHERE product_id = :product_id AND status = 1";
 
         $prep_state = $this->getDB()->prepare($sql);
 

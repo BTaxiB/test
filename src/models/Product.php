@@ -64,6 +64,7 @@ class Product extends Model
         
         $data = [];
 
+        $data['id']          = $row['id'];
         $data['title']       = $row['title'];
         $data['image']       = $row['image'];
         $data['description'] = $row['description'];
