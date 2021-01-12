@@ -37,6 +37,18 @@ class Comment extends Model
     }
 
     /**
+     * Get data from table where status is set to 0.
+     */
+    function getUnapproved()
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE status = 0";
+
+        $prep_state = $this->getDB()->prepare($sql);
+
+        return $prep_state->execute() ? $prep_state : false;
+    }
+
+    /**
      * Get data from table with matching id.
      */
     function getMatch(int $id)
