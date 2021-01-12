@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class Users extends Model
+class User extends Model
 {
 
     protected string $table = 'users';
@@ -68,6 +68,22 @@ class Users extends Model
         $data['admin']    = $row['admin'];
 
         return $data;
+    }
+
+    /**
+     * Update table row column status with matching id to 1.
+     * 
+     * @return void
+     */
+    function setAdmin(): void
+    {
+        $sql = "UPDATE {$this->table} SET status = 1 WHERE id = :id";
+
+        $prep_state = $this->getDB()->prepare($sql);
+
+        $prep_state->bindParam(':id', $this->id);
+
+        $prep_state->execute();
     }
 
     /**
