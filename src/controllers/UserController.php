@@ -44,9 +44,9 @@ class UserController
         $user->checkUser();
 
         //double checking
-        if (Sanitation::match($user->username, $data['username'])) {
-            if (Sanitation::match($user->password, $data['password'])) {
-                return $user->id;
+        if (Sanitation::match($this->username, $data['username'])) {
+            if (Sanitation::match($this->password, $data['password'])) {
+                return $this->id;
             }
         } else {
             return false;

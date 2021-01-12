@@ -3,19 +3,27 @@ require_once './views/layouts/header.php';
 
 session_start();
 
-
+?>
+<?php
+if (isset($_SESSION['user_id'])) {
+?>
+    <a href="/?login" class="btn btn-info">Login</a>
+    <a href="/?register" class="btn btn-warning">Register</a>
+<?php
+}
 
 switch ($_GET) {
-    case isset($_GET['signed_in']):
-        $_SESSION['user_id'] = $_GET['code'];
-        break;
-    case isset($_GET['login_err']):
+    // case isset($_GET['logout']):
+    //     session_start();
+    //     session_destroy();
+    //     break;
 
+    case isset($_GET['login']):
+        require_once 'views/user/login.php';
         break;
 
-    case isset($_GET['logout']):
-        session_start();
-        session_destroy();
+    case isset($_GET['register']):
+        require_once 'views/user/register.php';
         break;
 
     case isset($_GET['products']):

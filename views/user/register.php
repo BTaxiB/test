@@ -5,21 +5,23 @@
     <label for="password">Password</label>
     <input type="text" name="password" class="form-control">
 
-    <input type="submit" value="Login">
+    <label for="confirm_password">Confirm Password</label>
+    <input type="text" name="confirm_password" class="form-control">
+
+    <input type="submit" value="Register">
 </form>
 
 <?php
 $status = '';
 if ($_POST) {
-    $user_id = $adminCtrl->login([
-        'username' => $_POST['username'],
-        'password' => $_POST['password']
-    ]);
-
-    if ($user_id) {
-        $_SESSION['user_id'] = $user_id;
-        header("Location: index.php");
-        exit();
+    if ($_POST['password'] === $_POST['confirm_password']) {
+        $adminCtrl->register([
+            'username' => $_POST['username'],
+            'password' => $_POST['password']
+        ]);
+        $status = 'success';
+    } else {
+        $status = 'error';
     }
 }
 
