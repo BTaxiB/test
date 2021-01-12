@@ -29,7 +29,7 @@ class User extends Model
      */
     function create()
     {
-        $sql = "INSERT INTO {$this->table} SET username = :username, password = :password, admin = :admin, product_id = :product_id";
+        $sql = "INSERT INTO {$this->table} SET username = :username, password = :password, admin = :admin";
 
         $prep_state = $this->getDB()->prepare($sql);
 
