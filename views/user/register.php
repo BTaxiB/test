@@ -12,15 +12,14 @@
 </form>
 
 <?php
-$status = '';
 if ($_POST) {
-    if ($_POST['password'] === $_POST['confirm_password']) {
+    // if ($_POST['password'] === $_POST['confirm_password']) {
         $adminCtrl->register([
             'username' => $_POST['username'],
             'password' => $_POST['password']
         ]);
         header("Location: /?login");
-    } else {
-        echo "Passwords don't match";
-    }
+    // } else {
+        // echo "Passwords don't match";
+    // }
 }
