@@ -24,7 +24,7 @@ class UserController
 
             $user->create();
 
-            return "Success";
+            return true;
         } catch (\Throwable $th) {
             throw 'Something went wrong with insertion. Check your data.';
         }
