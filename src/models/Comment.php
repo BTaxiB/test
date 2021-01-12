@@ -80,7 +80,7 @@ class Comment extends Model
             return false;
         }
 
-        return $prep_state;
+        return true;
     }
 
     /**
