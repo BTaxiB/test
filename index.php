@@ -1,6 +1,8 @@
 <?php
+require_once './views/layouts/header.php';
 
 session_start();
+
 
 
 switch ($_GET) {
@@ -38,3 +40,5 @@ switch ($_GET) {
         }
         break;
 }
+
+require_once './views/layouts/footer.php';
