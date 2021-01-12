@@ -29,7 +29,7 @@ class Comment extends Model
      */
     function get()
     {
-        $sql = "SELECT * FROM {$this->table} WHERE product_id = NULL";
+        $sql = "SELECT * FROM {$this->table} WHERE product_id IS NULL";
 
         $prep_state = $this->getDB()->prepare($sql);
 
