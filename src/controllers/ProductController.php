@@ -10,7 +10,9 @@ class ProductController
     use Sanitation;
 
     /**
+     * Store products in database.
      * 
+     * @return void
      */
     function store(array $data): void
     {
@@ -28,7 +30,7 @@ class ProductController
     }
 
     /**
-     * 
+     * Get all products.
      */
     function index()
     {
@@ -39,7 +41,7 @@ class ProductController
     }
 
     /**
-     * 
+     * Get product with matching id.
      */
     function show(int $id): array
     {
@@ -50,7 +52,9 @@ class ProductController
     }
 
     /**
+     * Update products data.
      * 
+     * @return void
      */
     function update(array $data): void
     {
@@ -72,7 +76,7 @@ class ProductController
     }
 
     /**
-     * 
+     * Delete product from database.
      */
     function delete(int $id): void
     {
