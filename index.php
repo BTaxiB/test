@@ -22,6 +22,10 @@ switch ($_GET) {
         require_once 'views/product/index.php';
         break;
 
+    case isset($_GET['catalog']):
+        require_once 'views/product/catalog.php';
+        break;
+
     case isset($_GET['create_product']):
         require_once 'views/product/create.php';
         break;
@@ -35,9 +39,6 @@ switch ($_GET) {
         break;
 
     default:
-        if (!isset($_SESSION['user_id'])) {
-            require_once 'views/user/login.php';
-        }
         break;
 }
 

@@ -1,4 +1,4 @@
-<?php 
+<?php
 $items = $productCtrl->index();
 
 if ($items->rowCount() > 0) { ?>
@@ -7,15 +7,23 @@ if ($items->rowCount() > 0) { ?>
             Add New Product
         </a>
         <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Title</th>
+                    <th>Image</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
             <tbody>
-                <?php 
-                $count = 0;
-                while($row = $items->fetch(PDO::FETCH_ASSOC)) {
+                <?php while ($row = $items->fetch(PDO::FETCH_ASSOC)) {
                     echo "<tr>";
-                    echo "<td><a href='/?show_product&id=" . $row['id'] . "'>" . $row['title'] . "</a></td>";
+                    echo "<td>" . $row['title'] . "</td>";
                     echo "<td><img src='" . $row['image'] . "'\></td>";
                     echo "<td>" . $row['description'] . "</td>";
                     echo "<td>";
+                    echo "<a href='/?delete_product&id=" . $row['id'] . "' class='btn btn-danger'>Delete</a>";
+                    echo "<a href='/?show_product&id=" . $row['id'] . "' class='btn btn-info'>Show</a>";
                     echo "</td>";
                     echo "</tr>";
                 }
