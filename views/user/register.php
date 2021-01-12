@@ -19,23 +19,8 @@ if ($_POST) {
             'username' => $_POST['username'],
             'password' => $_POST['password']
         ]);
-        $status = 'success';
-    } else {
-        $status = 'error';
-    }
-}
-
-switch ($status) {
-    case 'success':
-        echo "<h1>Registered succesfully";
         header("Location: /?login");
-        break;
-
-    case 'error':
+    } else {
         echo "Passwords don't match";
-        break;
-
-    default:
-        # code...
-        break;
+    }
 }
