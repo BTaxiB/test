@@ -41,14 +41,12 @@ class UserController
         $user = new User();
         $user->username = $data['username'];
         $user->password = $data['password'];
-        $state = $user->checkUser();
-
-        $row = $state->fetch();
+        $user->checkUser();
 
         //double checking
-        if (Sanitation::match($row['username'], $data['username'])) {
-            if (Sanitation::match($row['password'], $data['password'])) {
-                return $row['id'];
+        if (Sanitation::match($user->username, $data['username'])) {
+            if (Sanitation::match($user->password, $data['password'])) {
+                return $user->id;
             }
         } else {
             return false;

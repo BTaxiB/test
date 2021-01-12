@@ -125,14 +125,18 @@ class User extends Model
      */
     function checkUser()
     {
-        $sql = "SELECT * FROM {$this->table} WHERE username = :username AND password = :password";
+        $sql = "SELECT * FROM {$this->table} WHERE username = :username AND password = :password LIMIT 1";
 
         $prep_state = $this->getDB()->prepare($sql);
-        $prep_state->bindParam(':username', $username);
-        $prep_state->bindParam(':password', $password);
+        $prep_state->bindParam(':username', $this->username);
+        $prep_state->bindParam(':password', $this->password);
 
         $prep_state->execute();
 
-        return $prep_state;
+        $row = $prep_state->fetch();
+
+        $this->id       = $row['id'];
+        $this->username = $row['username'];
+        $this->password = $row['password'];
     }
 }
