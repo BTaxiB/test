@@ -120,4 +120,20 @@ class User extends Model
 
         return $prep_state->execute() ? true : false;
     }
+
+    /**
+     * Check if user credentials exist.
+     */
+    function checkUser()
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE username = :username AND password = :password";
+
+        $prep_state = $this->getDB()->prepare($sql);
+        $prep_state->bindParam(':username', $username);
+        $prep_state->bindParam(':password', $password);
+
+        $prep_state->execute();
+
+        return $prep_state;
+    }
 }

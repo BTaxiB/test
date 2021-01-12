@@ -13,4 +13,9 @@ trait Sanitation
 
         return $data;
     }
+
+    static function match($value, $value1)
+    {
+        return ($value === $value1) ? true : false;
+    }
 }

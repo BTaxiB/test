@@ -13,7 +13,7 @@ class UserController
     /**
      * 
      */
-    function store(array $data): void
+    function register(array $data): void
     {
         try {
             $user = new User();
@@ -28,15 +28,29 @@ class UserController
     }
 
     /**
+     * Checking users credentials.
      * 
+     * @return mixed
+     * Returns user_id|false depending on success.
      */
-    // function index()
-    // {
-    //     $user = new User();
-    //     $data = $user->getAll();
+    function login(array $data)
+    {
+        $user = new User();
+        $user->username = $data['username'];
+        $user->password = $data['password'];
+        $state = $user->checkUser();
 
-    //     return $data;
-    // }
+        $row = $state->fetch();
+
+        //double checking
+        if (Sanitation::match($row['username'], $data['username'])) {
+            if (Sanitation::match($row['password'], $data['password'])) {
+                return $row['id'];
+            }
+        } else {
+            return false;
+        }
+    }
 
     /**
      * 
