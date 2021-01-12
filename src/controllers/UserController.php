@@ -69,35 +69,35 @@ class UserController
     /**
      * Grant admin privileges to user.
      */
-    function grantAdmin(int $id)
-    {
-        $user = new User();
+    // function grantAdmin(int $id)
+    // {
+    //     $user = new User();
 
-        $result = $this->show($id);
+    //     $result = $this->show($id);
 
-        if (!isset($result['id'])) {
-            return false;
-        }
+    //     if (!isset($result['id'])) {
+    //         return false;
+    //     }
 
-        $user->id = $result['id'];
-        $user->setAdmin();
-    }
+    //     $user->id = $result['id'];
+    //     $user->setAdmin();
+    // }
 
     /**
      * Check if user is admin.
      */
-    function checkStatus(int $id)
-    {
-        $user = new User();
+    // function checkStatus(int $id)
+    // {
+    //     $user = new User();
 
-        $result = $this->show($id);
+    //     $result = $this->show($id);
 
-        if (!isset($result['id'])) {
-            return false;
-        }
+    //     if (!isset($result['id'])) {
+    //         return false;
+    //     }
 
-        return $user->isAdmin($result['id']);
-    }
+    //     return $user->isAdmin($result['id']);
+    // }
 
     /**
      * Approve comment for publishing.
