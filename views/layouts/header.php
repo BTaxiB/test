@@ -19,7 +19,7 @@
 
     .container-fluid {
         margin: 0 auto;
-        width: 70%;
+        width: 100%;
     }
 </style>
 

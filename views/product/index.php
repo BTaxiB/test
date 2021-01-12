@@ -1,4 +1,7 @@
 <?php
+if(!isset($_SESSION['user_id'])) {
+    header("Location: index.php?catalog");
+}
 $items = $productCtrl->index();
 
 if ($items->rowCount() > 0) { ?>
