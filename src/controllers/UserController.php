@@ -26,7 +26,7 @@ class UserController
 
             return true;
         } catch (\Throwable $th) {
-            throw 'Something went wrong with insertion. Check your data.';
+            echo 'Something went wrong with insertion. Check your data.';
         }
     }
 
@@ -105,13 +105,14 @@ class UserController
     function approveComment(int $id)
     {
         $comment = new Comment();
-        $result = $this->show($id);
+        $comment->edit($id);
 
-        if (!isset($result['id'])) {
+        if (!isset($comment)) {
             return false;
         }
 
-        $comment->id = $result['id'];
+        $comment->id = $id;
+
         $comment->approve();
     }
 

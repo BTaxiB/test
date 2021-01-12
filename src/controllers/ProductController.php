@@ -25,7 +25,7 @@ class ProductController
 
             $product->create();
         } catch (\Throwable $th) {
-            throw 'Something went wrong with insertion. Check your data.';
+            echo 'Something went wrong with insertion. Check your data.';
         }
     }
 
