@@ -23,6 +23,7 @@ if (isset($_GET['id'])) {
         echo "<h1 style='color:blue;'>" . $product['title'] . "</h1>";
         echo "<img src='" . $product['image'] . "'>";
         echo "<p>" . $product['description'] . "</p>";
+        echo "<a href='/?delete_product&id=" . $row['id'] . "' class='btn btn-danger'>Delete</a>";
         echo "<br><br><br><br>";
         ?>
 
