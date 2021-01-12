@@ -29,13 +29,12 @@ class User extends Model
      */
     function create()
     {
-        $sql = "INSERT INTO {$this->table} SET username = :username, password = :password, admin = :admin";
+        $sql = "INSERT INTO {$this->table} SET username = :username, password = :password";
 
         $prep_state = $this->getDB()->prepare($sql);
 
         $prep_state->bindParam(':username', $this->username);
         $prep_state->bindParam(':password', $this->password);
-        $prep_state->bindParam(':admin', $this->admin);
 
         if (!$prep_state->execute()) {
             return false;
