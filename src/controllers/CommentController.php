@@ -41,6 +41,17 @@ class CommentController
     /**
      * 
      */
+    function companyComments()
+    {
+        $comment = new Comment();
+        $state = $comment->get();
+
+        return $state;
+    }
+
+    /**
+     * 
+     */
     function productComments(int $id)
     {
         $comment = new Comment();

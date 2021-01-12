@@ -25,6 +25,18 @@ class Comment extends Model
     }
 
     /**
+     * Get data from table where product_id is not set.
+     */
+    function get()
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE product_id = NULL";
+
+        $prep_state = $this->getDB()->prepare($sql);
+
+        return $prep_state->execute() ? $prep_state : false;
+    }
+
+    /**
      * Get data from table with matching id.
      */
     function getMatch(int $id)
