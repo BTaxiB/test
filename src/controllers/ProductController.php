@@ -40,6 +40,17 @@ class ProductController
         return $state;
     }
 
+        /**
+     * Get all products.
+     */
+    function indexPaginated($from_record_num, $records_per_page)
+    {
+        $product = new Product();
+        $state = $product->getPaginated($from_record_num, $records_per_page);
+
+        return $state;
+    }
+
     /**
      * Get product with matching id.
      */

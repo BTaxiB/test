@@ -25,6 +25,21 @@ class Product extends Model
     }
 
     /**
+     * Get data from table paginated.
+     */
+    function getPaginated(int $from_record_num, int $records_per_page)
+    {
+        $sql = "SELECT * FROM {$this->table} LIMIT ?, ?";
+
+        $prep_state = $this->getDB()->prepare($sql);
+
+        $prep_state->bindParam(1, $from_record_num, \PDO::PARAM_INT);
+        $prep_state->bindParam(2, $records_per_page, \PDO::PARAM_INT);
+
+        return $prep_state->execute() ? $prep_state : false;
+    }
+
+    /**
      * Insert table row.
      */
     function create()
@@ -61,7 +76,7 @@ class Product extends Model
         $prep_state->execute();
 
         $row = $prep_state->fetch(\PDO::FETCH_ASSOC);
-        
+
         $data = [];
 
         $data['id']          = $row['id'];
