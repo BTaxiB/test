@@ -11,17 +11,20 @@ class UserController
     use Sanitation;
 
     /**
+     * Register user account into database.
      * 
+     * @return string
      */
-    function register(array $data): void
+    function register(array $data): string
     {
         try {
             $user = new User();
             $user->username    = Sanitation::validInput($data['username']);
             $user->password    = Sanitation::validInput($data['password']);
-            $user->admin       = $data['admin'];
 
             $user->create();
+
+            return "Success";
         } catch (\Throwable $th) {
             throw 'Something went wrong with insertion. Check your data.';
         }
@@ -53,7 +56,7 @@ class UserController
     }
 
     /**
-     * 
+     * Get user with matching id from database.
      */
     function show(int $id): array
     {
@@ -64,7 +67,7 @@ class UserController
     }
 
     /**
-     * 
+     * Grant admin privileges to user.
      */
     function grantAdmin(int $id)
     {
@@ -81,7 +84,7 @@ class UserController
     }
 
     /**
-     * 
+     * Check if user is admin.
      */
     function checkStatus(int $id)
     {
@@ -97,7 +100,7 @@ class UserController
     }
 
     /**
-     * 
+     * Approve comment for publishing.
      */
     function approveComment(int $id)
     {
@@ -114,7 +117,9 @@ class UserController
 
 
     /**
+     * Remove user from database.
      * 
+     * @return void
      */
     function delete(int $id): void
     {

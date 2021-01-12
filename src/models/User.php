@@ -112,7 +112,7 @@ class User extends Model
 
     function isAdmin(int $id): bool
     {
-        $sql = "SELECT status FROM {$this->table} WHERE id = :id LIMIT 1";
+        $sql = "SELECT admin FROM {$this->table} WHERE admin = 1 AND id = :id LIMIT 1";
 
         $prep_state = $this->getDB()->prepare($sql);
 
