@@ -25,6 +25,20 @@ class Comment extends Model
     }
 
     /**
+     * Get data from table with matching id.
+     */
+    function getMatch(int $id)
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE product_id = :product_id";
+
+        $prep_state = $this->getDB()->prepare($sql);
+
+        $prep_state->bindParam(':product_id', $id);
+
+        return $prep_state->execute() ? $prep_state : false;
+    }
+
+    /**
      * Insert table row.
      */
     function create()
@@ -61,7 +75,7 @@ class Comment extends Model
         $prep_state->execute();
 
         $row = $prep_state->fetch(\PDO::FETCH_ASSOC);
-        
+
         $data = [];
 
         $data['name']       = $row['name'];
@@ -71,6 +85,23 @@ class Comment extends Model
 
         return $data;
     }
+
+    /**
+     * Update table row column status with matching id to 1.
+     * 
+     * @return void
+     */
+    function approve(): void
+    {
+        $sql = "UPDATE {$this->table} SET status = 1 WHERE id = :id";
+
+        $prep_state = $this->getDB()->prepare($sql);
+
+        $prep_state->bindParam(':id', $this->id);
+
+        $prep_state->execute();
+    }
+
 
     /**
      * Delete table row with matching id.
