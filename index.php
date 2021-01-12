@@ -13,11 +13,14 @@ if (isset($_SESSION['user_id'])) {
 }
 
 switch ($_GET) {
-    // case isset($_GET['logout']):
-    //     session_start();
-    //     session_destroy();
-    //     break;
+        // case isset($_GET['logout']):
+        //     session_start();
+        //     session_destroy();
+        //     break;
 
+    case !isset($_GET):
+        echo "hi";
+        break;
     case isset($_GET['login']):
         require_once 'views/user/login.php';
         break;
@@ -47,6 +50,7 @@ switch ($_GET) {
         break;
 
     default:
+        echo "hi";
         break;
 }
 
