@@ -1,4 +1,4 @@
-<?php require_once './views/layouts/header.php';
+<?php 
 $items = $productCtrl->index();
 
 if ($items->rowCount() > 0) { ?>
